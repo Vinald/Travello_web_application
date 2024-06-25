@@ -1,0 +1,78 @@
+Data science
+- coding, math and statistics in applied settings
+- to get insight of the given data
+- get unstructures data and find order, meaning and value
+- DS is goal driven
+
+Dataset path way;
+- planning
+    - define goals
+    - organize resources
+    - coordinate people
+    - schedule project
+- Data preparation
+    - get data
+    - clean data
+    - explore the data
+    - Refine the data
+- Modeling
+    - create a model
+    - validate the model
+    - evaluate the model
+    - refine the model
+- follow up
+    - present the model
+    - deploy the model
+    - revisit the model
+    - achieve assets
+
+
+analysis
+- analysis X story = value
+- make the message clear
+- analysis is for the sake of doing (goal -> action)
+
+
+Data
+- data gives correlation
+- client want causation
+
+
+communication and presentation
+- use more graphs
+- avoid tables
+- avoid text
+- avoid technical information
+- clarity and narrative flow is important
+- use less colors
+- avoid interative graphs
+- avoid 3D graphs 
+
+
+Data sourcing
+- measurement (metrics)
+- metrics
+    - business metrics (revenue, customer value)
+    - Key Performance Indicators KPIs  (non-financial, timely, simple, team based)
+    - SMART goals (specific, measurable, assignable, realatics, time-baed)
+    - multiple goals
+- access data
+- evaluating data
+
+
+Soures of data
+- In-house data
+    - Company database
+- open data
+    - government data 
+    - corperate data 
+- purchased data 
+    - Daas -> Data as a service
+    - Data brokers
+- APIs -> apllication programming interface
+    - allows programs to talk to each other 
+    - REST API
+    - social apis like facebook, google, twitter, google maps, youtube
+- Scrapping
+    - HTMl text
+    - media
