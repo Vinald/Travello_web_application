@@ -1,0 +1,271 @@
+theoritical overview
+{
+    - this is a course from free code 
+}
+
+resources 
+{
+    - odsc (odsc.com) open data science
+    - osf.io open science framework
+    - kaggle.com
+}
+
+Data science
+{
+    - analysis of diverse Data
+    - finding insight in the data
+    - it involves coding, statistics and domain knowledge
+    - goal oriented (action)
+
+    coding
+        {
+            - R and Python
+            - Database (SQL)
+            - command line (Bash) 
+            - search  (Regex)
+        }
+
+    statistics
+        {
+            - probability, alegbra, regression
+        }
+
+    domain
+        {
+            - expertise in the field
+        }
+
+}
+
+pathway of data science
+{
+    planning
+        {
+            - define the goals
+            - organize the data
+            - coordinate the people
+            - schedule
+        }
+    data preparation
+        {
+            - get data
+            - clean the data
+            - explore the data
+            - refine the data
+        }
+    modeling
+        {
+            - create a model
+            - validate the model
+            - envaluate the model
+            - refine the model
+        }
+    follow up
+        {
+            - present the model
+            - deploy the model
+            - revist the model
+            - archive the assets
+        }
+}
+
+big data science
+{
+    - data science & big data
+    - volume, velocity, and variety of data
+}
+
+tools
+{
+    - coding tools
+        {
+            - Python
+            - R
+            - sql
+        }
+    - data science tools
+        {
+            - R
+            - Python
+            - excel
+        }
+}
+
+ethical (potentials and risks)
+{
+    - privacy [ confidentiality ]
+    - anonymity [ not hard to identify people and]
+    - copyright [ scrapping data from the website]
+    - data security
+    - potential bias 
+    - overconfidence
+}
+
+methods
+{
+    - sourcing
+        {
+            - getting data [in-house, open, third-party, ]
+            - use existing data [APIs]
+            - scrapping data from the website without APIs
+            - create new data [interview, surveys]
+        }
+    - coding
+        {
+            - any tech that allows you to manipulate data
+            - apps
+                {
+                    - spreadsheet
+                    - spss
+                    - tablea
+                }
+            - data
+                {
+                    - formats need to attain insights about data
+                }
+            - code 
+                {
+                    - R
+                    - Python
+                    - sql
+                    - c, c++ java
+                    - bash  
+                }
+        }
+    - math
+        {
+            - know procedures to use and why
+            - alegbra
+            - matrix
+            - linear equations
+            - big o
+        } 
+    - statistics
+        {
+            - exploratory graphics
+            - inference
+            - details (problems validations estimation fit )
+        }
+    - machine learning
+        {
+            - all models are worng but some are useful
+            - categorize and predict
+            - logistic regression
+            - knn
+            - decision trees
+            - svm
+            - naive bayes
+            - prediction
+                {
+                    - linear regression
+                    - poissons regression
+                    - ensemble methods
+                }
+        }
+} 
+
+analysis
+{
+    - use less text
+    - use more graphs or presentations
+    - ask queations and answer them
+    - for getting insight
+    - give steps and make them clear 
+    - data gives correlations
+    - but clients want causation
+    - exploratory graphics (understaing the data)
+    - presentations graphics
+    - clarity vs distraction
+        {
+            - colors
+            - 3D
+            - interactions
+            - animation
+            - use simples graphs which explain what they do
+            - 
+        }
+    - archive the data, methods, raw data
+    - store data in common formats  (csv)
+    - store in accessible locations (github)
+
+}
+
+data sourcing
+{
+    - data needed
+    - no data no data science
+    - measurements
+        {
+            - define the goal (define success)
+            - metrics
+                {
+                    - business meterics
+                    - key performance indicator (KPIs)
+                    - SMART (specific measurable assignable realistic time bound)
+                }
+            - need to optimize the methods to achieve a goal (idea of multiple  goals at ago)
+            - accurancy
+                {
+                    - classification report
+                    - sensitivity
+                    - specificity
+                    - ppv positive predictive value
+                    - npv negative predictive value
+                }
+        }
+    
+    - social measurements
+        {
+            - people
+            - laws and regulations
+            - competitions
+            - rewards
+            - limits and consequesnces
+        }
+    
+    - getting data
+        {
+            - ppp [proprietary, public, purchased]
+            - in-house data
+                {
+                    - formats
+                    - quality control
+                    - restrictions
+                    - fast and easy to use
+                    - identifiers
+                    - standardised
+                }
+            - open data
+                {
+                    - data from the government
+                    - un data
+                    - world health organization
+                    - google.com
+                    - amazon.org
+                }
+            - third party
+                {
+                    - data as a service (DaaS)
+                    - data brokers
+                }
+            - APIs
+                {
+                    - application program interface
+                    - scrap the internet
+                    - rest APIs
+                    - data in json formats
+                    - social APIs (faceboook)
+                    - visual apis (google maps, youtube )
+                }
+            - scrapping 
+                {
+                   - import.io
+                   - tabula
+                   - google sheets 
+                   - excel
+                   - Python
+                   - html text
+                   - pdfs
+                }
+        }
+}
