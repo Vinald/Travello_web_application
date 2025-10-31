@@ -1,5 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Home - Travello{% endblock %} {% block
-content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Home - Travello{% endblock %} 
+{% block content %}
 
 <div class="super_container">
     <!-- Home -->
@@ -12,7 +12,7 @@ content %}
                 <div class="owl-item">
                     <div
                         class="background_image"
-                        style="background-image: url({%static'images/home_slider.jpg'%})"
+                        style="background-image: url({% static 'images/home_slider.jpg' %})"
                     ></div>
                     <div class="home_slider_content_container">
                         <div class="container">
@@ -33,7 +33,7 @@ content %}
                 <div class="owl-item">
                     <div
                         class="background_image"
-                        style="background-image: url({%static'images/home_slider.jpg'%})"
+                        style="background-image: url({% static 'images/home_slider.jpg' %})"
                     ></div>
                     <div class="home_slider_content_container">
                         <div class="container">
@@ -54,7 +54,7 @@ content %}
                 <div class="owl-item">
                     <div
                         class="background_image"
-                        style="background-image: url({%static'images/home_slider.jpg'%})"
+                        style="background-image: url({% static 'images/home_slider.jpg' %})"
                     ></div>
                     <div class="home_slider_content_container">
                         <div class="container">
@@ -140,7 +140,7 @@ content %}
     <div class="intro">
         <div
             class="intro_background"
-            style="background-image: url({%static'images/intro.png'%})"
+            style="background-image: url({% static 'images/intro.png' %})"
         ></div>
         <div class="container">
             <div class="row">
@@ -454,7 +454,7 @@ content %}
                     <div class="travello">
                         <div
                             class="background_image"
-                            style="background-image: url({%static'images/travello.jpg'%})"
+                            style="background-image: url({% static 'images/travello.jpg' %})"
                         ></div>
                         <div class="travello_content">
                             <div class="travello_content_inner">
