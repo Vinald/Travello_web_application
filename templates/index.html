@@ -13,11 +13,12 @@
     <!-- Home Slider -->
     <div class="home_slider_container">
         <div class="owl-carousel owl-theme home_slider">
+            {% for slider in sliders %}
             <!-- Slide -->
             <div class="owl-item">
                 <div
                     class="background_image"
-                    style="background-image: url({%static'images/home_slider.jpg'%})"
+                    style="background-image: url({{ slider.image.url }})"
                 ></div>
                 <div class="home_slider_content_container">
                     <div class="container">
@@ -25,7 +26,7 @@
                             <div class="col">
                                 <div class="home_slider_content">
                                     <div class="home_title">
-                                        <h2>Let us take you away</h2>
+                                        <h2>{{ slider.title }}</h2>
                                     </div>
                                 </div>
                             </div>
@@ -33,48 +34,7 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Slide -->
-            <div class="owl-item">
-                <div
-                    class="background_image"
-                    style="background-image: url({%static'images/home_slider.jpg'%})"
-                ></div>
-                <div class="home_slider_content_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="home_slider_content">
-                                    <div class="home_title">
-                                        <h2>Let us take you away</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide -->
-            <div class="owl-item">
-                <div
-                    class="background_image"
-                    style="background-image: url({%static'images/home_slider.jpg'%})"
-                ></div>
-                <div class="home_slider_content_container">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col">
-                                <div class="home_slider_content">
-                                    <div class="home_title">
-                                        <h2>Let us take you away</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
 
         <div class="home_page_nav">
@@ -143,7 +103,7 @@
 <!-- Intro -->
 
 <div class="intro">
-    <div class="intro_background" style="background-image: url({%static'images/intro.png'%})"></div>
+    <div class="intro_background" style="background-image: url({% static 'images/intro.png' %})"></div>
     <div class="container">
         <div class="row">
             <div class="col">
@@ -278,56 +238,18 @@
                 <!-- Testimonials Slider -->
                 <div class="testimonials_slider_container">
                     <div class="owl-carousel owl-theme testimonials_slider">
-                        <!-- Slide -->
-                        <div class="owl-item text-center">
-                            <div class="testimonial">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis
-                                dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
-                                vehicula odio.
-                            </div>
-                            <div class="testimonial_author">
-                                <div
-                                    class="testimonial_author_content d-flex flex-row align-items-end justify-content-start"
-                                >
-                                    <div>john turner,</div>
-                                    <div>client</div>
-                                </div>
+                        {% for testimonial in testimonials %}
+                        <div class="testimonial">{{ testimonial.content }}</div>
+                        <div class="testimonial_author">
+                            <div
+                                class="testimonial_author_content d-flex flex-row align-items-end justify-content-start"
+                            >
+                                <div>{{ testimonial.author }},</div>
+                                <div>{{ testimonial.position }}</div>
                             </div>
                         </div>
 
-                        <!-- Slide -->
-                        <div class="owl-item text-center">
-                            <div class="testimonial">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis
-                                dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
-                                vehicula odio.
-                            </div>
-                            <div class="testimonial_author">
-                                <div
-                                    class="testimonial_author_content d-flex flex-row align-items-end justify-content-start"
-                                >
-                                    <div>john turner,</div>
-                                    <div>client</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Slide -->
-                        <div class="owl-item text-center">
-                            <div class="testimonial">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis
-                                dolor. Cras placerat lectus a posuere aliquet. Curabitur quis
-                                vehicula odio.
-                            </div>
-                            <div class="testimonial_author">
-                                <div
-                                    class="testimonial_author_content d-flex flex-row align-items-end justify-content-start"
-                                >
-                                    <div>john turner,</div>
-                                    <div>client</div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -355,98 +277,34 @@
         <div class="row">
             <div class="col-xl-8">
                 <div class="news_container">
-                    <!-- News Post -->
+                    {% for post in news_posts %}
                     <div
                         class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start"
                     >
                         <div class="news_post_image">
-                            <img src="{% static 'images/news_1.jpg' %}" alt="" />
+                            <img src="{{ post.image.url }}" alt="" />
                         </div>
                         <div class="news_post_content">
                             <div
                                 class="news_post_date d-flex flex-row align-items-end justify-content-start"
                             >
-                                <div>02</div>
-                                <div>june</div>
+                                <div>{{ post.date }}</div>
+                                <div>{{ post.month }}</div>
                             </div>
                             <div class="news_post_title">
-                                <a href="#">Best tips to travel light</a>
+                                <a href="#">{{ post.title }}</a>
                             </div>
                             <div class="news_post_category">
                                 <ul>
-                                    <li><a href="#">lifestyle & travel</a></li>
+                                    <li><a href="#">{{ post.category }}</a></li>
                                 </ul>
                             </div>
                             <div class="news_post_text">
-                                <p>
-                                    Pellentesque sit amet elementum ccumsan sit amet mattis eget,
-                                    tristique at leo. Vivamus massa.Tempor massa et laoreet.
-                                </p>
+                                <p>{{ post.content }}</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- News Post -->
-                    <div
-                        class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start"
-                    >
-                        <div class="news_post_image">
-                            <img src="{% static 'images/news_2.jpg' %}" alt="" />
-                        </div>
-                        <div class="news_post_content">
-                            <div
-                                class="news_post_date d-flex flex-row align-items-end justify-content-start"
-                            >
-                                <div>01</div>
-                                <div>june</div>
-                            </div>
-                            <div class="news_post_title">
-                                <a href="#">Best tips to travel light</a>
-                            </div>
-                            <div class="news_post_category">
-                                <ul>
-                                    <li><a href="#">lifestyle & travel</a></li>
-                                </ul>
-                            </div>
-                            <div class="news_post_text">
-                                <p>
-                                    Tempor massa et laoreet malesuada. Pellentesque sit amet
-                                    elementum ccumsan sit amet mattis eget, tristique at leo.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- News Post -->
-                    <div
-                        class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start"
-                    >
-                        <div class="news_post_image">
-                            <img src="{% static 'images/news_3.jpg' %}" alt="" />
-                        </div>
-                        <div class="news_post_content">
-                            <div
-                                class="news_post_date d-flex flex-row align-items-end justify-content-start"
-                            >
-                                <div>29</div>
-                                <div>may</div>
-                            </div>
-                            <div class="news_post_title">
-                                <a href="#">Best tips to travel light</a>
-                            </div>
-                            <div class="news_post_category">
-                                <ul>
-                                    <li><a href="#">lifestyle & travel</a></li>
-                                </ul>
-                            </div>
-                            <div class="news_post_text">
-                                <p>
-                                    Vivamus massa.Tempor massa et laoreet malesuada. Aliquam nulla
-                                    nisl, accumsan sit amet mattis.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
@@ -455,7 +313,7 @@
                 <div class="travello">
                     <div
                         class="background_image"
-                        style="background-image: url({%static'images/travello.jpg'%})"
+                        style="background-image: url({% static 'images/travello.jpg' %})"
                     ></div>
                     <div class="travello_content">
                         <div class="travello_content_inner">

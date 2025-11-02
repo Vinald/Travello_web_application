@@ -1,5 +1,11 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
+
+try:
+    load_dotenv(os.path.join(Path(__file__).resolve().parent.parent, ".env"))
+except Exception:
+    pass
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,7 +81,6 @@ DATABASES = {
         "USER": os.getenv("DB_USER"),
         "PASSWORD": os.getenv("DB_PASSWORD"),
         "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT"),
     }
 }
 
