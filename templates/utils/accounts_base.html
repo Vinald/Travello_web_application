@@ -41,14 +41,45 @@
         <div class="super_container">
             <!-- Header -->
 
-            {% include 'utils/header.html' %}
+            <header class="header mb-lg-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div
+                                class="header_content d-flex flex-row align-items-center justify-content-start"
+                            >
+                                <div
+                                    class="header_content_inner d-flex flex-row align-items-end justify-content-start"
+                                >
+                                    <div class="logo"><a href="index.html">Travello</a></div>
+                                    <nav class="main_nav">
+                                        <ul
+                                            class="d-flex flex-row align-items-start justify-content-start"
+                                        >
+                                            <li class="active"><a href="index.html">Home</a></li>
+                                            <li><a href="about.html">About us</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="contact.html">Contact</a></li>
 
-            <!-- body  -->
+                                            <!-- <li><a href="register">Register</a></li> -->
+                                        </ul>
+                                    </nav>
+
+                                    <!-- Hamburger -->
+
+                                    <div class="hamburger ml-auto">
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- block content -->
             {% block content %} {% endblock %}
 
-            <!-- Footer -->
-
-            {% include 'utils/footer.html' %}
         </div>
 
         <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
