@@ -8,13 +8,13 @@
                     <div
                         class="header_content_inner d-flex flex-row align-items-end justify-content-start"
                     >
-                        <div class="logo"><a href="index.html">Travello</a></div>
+                        <div class="logo"><a href="#">Travello</a></div>
                         <nav class="main_nav">
                             <ul class="d-flex flex-row align-items-start justify-content-start">
-                                <li class="active"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="#">Services</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="about">About us</a></li>
+                                <li><a href="services">Services</a></li>
+                                <li><a href="contact">Contact</a></li>
                                 {% if user.is_authenticated %}
                                 <li>Hello {{user.username}}</li>
                                 <li><a href="accounts/logout">Logout</a></li>
