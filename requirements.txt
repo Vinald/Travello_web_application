@@ -1,68 +1,48 @@
-aiohappyeyeballs==2.6.1
-aiohttp==3.13.3
-aiosignal==1.4.0
-amqp==5.3.1
-asgiref==3.11.1
-attrs==26.1.0
-billiard==4.2.4
-black==23.12.0
-celery==5.3.4
-certifi==2026.2.25
-click==8.3.1
-click-didyoumean==0.3.1
-click-plugins==1.1.1.2
-click-repl==0.3.0
-coverage==7.13.5
+# Core Django
 Django==6.0.3
-django-cors-headers==4.3.0
-django-debug-toolbar==4.1.0
-django-environ==0.11.2
-django-extensions==3.2.3
-django-filter==24.1
-django-ratelimit==4.1.0
-djangorestframework==3.14.0
-dotenv==0.9.9
-drf-spectacular==0.27.0
-flake8==6.1.0
-frozenlist==1.8.0
-idna==3.11
-inflection==0.5.1
-iniconfig==2.3.0
-isort==5.13.2
-jsonschema==4.26.0
-jsonschema-specifications==2025.9.1
-kombu==5.6.2
-mccabe==0.7.0
-multidict==6.7.1
-mypy_extensions==1.1.0
-packaging==26.0
-pathspec==1.0.4
-pillow==11.0.0
-platformdirs==4.9.4
-pluggy==1.6.0
-prompt_toolkit==3.0.52
-propcache==0.4.1
-psycopg==3.1.14
-psycopg2==2.9.11
-pycodestyle==2.11.1
-pyflakes==3.1.0
-pytest==7.4.3
-pytest-cov==4.1.0
-pytest-django==4.7.0
-python-dateutil==2.9.0.post0
-python-dotenv==1.0.0
-pytz==2026.1.post1
-PyYAML==6.0.3
-redis==5.0.1
-referencing==0.37.0
-rpds-py==0.30.0
-sentry-sdk==1.39.1
-six==1.17.0
+asgiref==3.11.1
 sqlparse==0.5.5
-typing_extensions==4.15.0
-tzdata==2025.3
-uritemplate==4.2.0
-urllib3==2.6.3
-vine==5.1.0
-wcwidth==0.6.0
-yarl==1.23.0
+
+# Database
+psycopg==3.1.14
+
+# Configuration
+python-dotenv==1.0.0
+django-environ==0.11.2
+
+# REST Framework & API
+djangorestframework==3.14.0
+django-filter==24.1
+drf-spectacular==0.27.0
+
+# Security
+django-cors-headers==4.3.0
+django-ratelimit==4.1.0
+
+# File Handling
+Pillow==11.0.0
+
+# Testing
+pytest==7.4.3
+pytest-django==4.7.0
+pytest-cov==4.1.0
+
+# Logging & Monitoring
+sentry-sdk==1.39.1
+
+# Task Queue
+celery==5.3.4
+redis==5.0.1
+
+# Code Quality
+black==23.12.0
+flake8==6.1.0
+isort==5.13.2
+
+# Development Tools
+django-extensions==3.2.3
+django-debug-toolbar==4.1.0
+
+# Server
+gunicorn==21.2.0
+
