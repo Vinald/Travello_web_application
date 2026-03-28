@@ -1,0 +1,84 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_DB: travello
+      POSTGRES_USER: travello
+      POSTGRES_PASSWORD: travello
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U travello"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+  web:
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py collectstatic --noinput &&
+             gunicorn --bind 0.0.0.0:8000 --workers 4 travello.wsgi:application"
+    ports:
+      - "8000:8000"
+    environment:
+      ENVIRONMENT: development
+      DEBUG: "True"
+      SECRET_KEY: dev-secret-key-change-in-production
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: travello
+      DB_USER: travello
+      DB_PASSWORD: travello
+      DB_HOST: db
+      DB_PORT: 5432
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+      - media_volume:/app/media
+
+  celery:
+    build: .
+    command: celery -A travello worker -l info
+    environment:
+      ENVIRONMENT: development
+      DEBUG: "True"
+      SECRET_KEY: dev-secret-key
+      DB_ENGINE: django.db.backends.postgresql
+      DB_NAME: travello
+      DB_USER: travello
+      DB_PASSWORD: travello
+      DB_HOST: db
+      DB_PORT: 5432
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+    depends_on:
+      - db
+      - redis
+      - web
+    volumes:
+      - .:/app
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
+  media_volume:
+

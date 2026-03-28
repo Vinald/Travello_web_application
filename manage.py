@@ -2,11 +2,19 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from pathlib import Path
+
+# Add project root to path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 
 def main():
     """Run administrative tasks."""
+    # Use environment-specific settings based on ENVIRONMENT variable
+    # Defaults to 'development' if not specified
+    environment = os.getenv('ENVIRONMENT', 'development').lower()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'travello.settings')
+
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

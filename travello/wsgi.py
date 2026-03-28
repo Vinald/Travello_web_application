@@ -8,9 +8,14 @@ https://docs.djangoproject.com/en/5.1/howto/deployment/wsgi/
 """
 
 import os
+from pathlib import Path
 
-from django.core.wsgi import get_wsgi_application
+# Set environment to production if not already set
+if 'ENVIRONMENT' not in os.environ:
+    os.environ['ENVIRONMENT'] = os.getenv('ENVIRONMENT', 'development')
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'travello.settings')
+
+from django.core.wsgi import get_wsgi_application
 
 application = get_wsgi_application()

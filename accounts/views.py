@@ -1,59 +1,133 @@
+"""
+Views for the accounts app.
+Handles user registration, login, and logout.
+"""
+
+import logging
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, auth
-from django.contrib import messages
+from django.views import View
+from django.contrib.auth.models import User
+from django.contrib import auth, messages
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from .forms import RegistrationForm, LoginForm
+from core.decorators import log_action
+
+logger = logging.getLogger(__name__)
 
 
-def register(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
+class RegisterView(View):
+    """
+    User registration view.
+    Handles both GET (display form) and POST (process registration) requests.
+    """
+    template_name = 'register.html'
+    form_class = RegistrationForm
 
-        if password1 != password2:
-            messages.info(request, 'Passwords do not match')
-            return render(request, 'register.html')
-        
-        elif User.objects.filter(username=username).exists():
-            messages.info(request, 'Username already exists')
-            return render(request, 'register.html')
-        
-        elif User.objects.filter(email=email).exists():
-            messages.info(request, 'Email already exists')
-            return render(request, 'register.html')
-        
+    def get(self, request):
+        """Display registration form."""
+        if request.user.is_authenticated:
+            return redirect('/')
+
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        """Process registration form submission."""
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            try:
+                user = form.save()
+                logger.info(f"New user registered: {user.username}")
+                messages.success(request, 'Registration successful! Please log in.')
+                return redirect('login')
+            except Exception as e:
+                logger.error(f"Registration error for user: {str(e)}")
+                messages.error(request, 'Registration failed. Please try again.')
         else:
-            user = User.objects.create_user(
-                username=username, first_name=first_name, last_name=last_name, email=email, password=password1)
-            user.save()
+            # Add form errors to messages
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, f"{field}: {error}")
 
-            return redirect('login')
+        return render(request, self.template_name, {'form': form})
 
-    else:
-        return render(request, 'register.html')
-    
-    
+
+class LoginView(View):
+    """
+    User login view.
+    Handles both GET (display form) and POST (process login) requests.
+    """
+    template_name = 'login.html'
+    form_class = LoginForm
+
+    def get(self, request):
+        """Display login form."""
+        if request.user.is_authenticated:
+            return redirect('/')
+
+        form = self.form_class()
+        return render(request, self.template_name, {'form': form})
+
+    @log_action("User Login Attempt")
+    def post(self, request):
+        """Process login form submission."""
+        form = self.form_class(request.POST)
+
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+
+            # Try to authenticate user
+            user = auth.authenticate(username=username, password=password)
+
+            if user is not None:
+                auth.login(request, user)
+                logger.info(f"User logged in: {user.username}")
+                messages.success(request, f'Welcome back, {user.first_name or user.username}!')
+
+                # Redirect to next page if provided, otherwise home
+                next_page = request.GET.get('next', '/')
+                return redirect(next_page)
+            else:
+                logger.warning(f"Failed login attempt for username: {username}")
+                messages.error(request, 'Invalid username or password.')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+
+        return render(request, self.template_name, {'form': form})
+
+
+@method_decorator(login_required(login_url='login'), name='dispatch')
+class LogoutView(View):
+    """
+    User logout view.
+    """
+
+    def get(self, request):
+        """Process logout request."""
+        username = request.user.username
+        auth.logout(request)
+        logger.info(f"User logged out: {username}")
+        messages.success(request, 'You have been logged out successfully.')
+        return redirect('/')
+
+
+# Keep functional views for backward compatibility
+def register(request):
+    """Functional view for registration (delegates to RegisterView)."""
+    view = RegisterView.as_view()
+    return view(request)
 
 
 def login(request):
-    if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-
-        user = auth.authenticate(username=username, password=password)
-
-        if user is not None:
-            auth.login(request, user)
-            return redirect('/')
-        else:
-            messages.info(request, 'Invalid credentials')
-            return render(request, 'login.html')
-
-    return render(request, 'login.html')
+    """Functional view for login (delegates to LoginView)."""
+    view = LoginView.as_view()
+    return view(request)
 
 
 def logout(request):
-    auth.logout(request)
-    return redirect('/')
+    """Functional view for logout (delegates to LogoutView)."""
+    view = LogoutView.as_view()
+    return view(request)
