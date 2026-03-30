@@ -20,7 +20,7 @@ class ContactView(View):
     Contact form view.
     Handles both GET (display form) and POST (process submission) requests.
     """
-    template_name = 'contact.html'
+    template_name = 'contact/contact.html'
     form_class = ContactForm
 
     def get(self, request):

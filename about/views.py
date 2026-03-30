@@ -11,7 +11,7 @@ class AboutView(View):
     About page view.
     Displays company information and team details.
     """
-    template_name = 'about.html'
+    template_name = 'about/about.html'
 
     def get(self, request):
         """Display about page."""

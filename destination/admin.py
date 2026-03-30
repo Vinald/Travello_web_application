@@ -3,7 +3,7 @@ Admin configuration for the destination app.
 """
 
 from django.contrib import admin
-from django.utils.html import format_html
+from django.utils.safestring import mark_safe
 from .models import Destination, Testimonial, NewsPosts, HomeSlider
 
 
@@ -29,13 +29,17 @@ class DestinationAdmin(admin.ModelAdmin):
 
     def offer_badge(self, obj):
         """Display offer status with colored badge."""
+        from django.utils.html import escape
+
         if obj.offer:
-            return format_html(
-                '<span style="background-color: #28a745; color: white; padding: 5px 10px; border-radius: 3px;">On Offer</span>'
-            )
-        return format_html(
-            '<span style="background-color: #6c757d; color: white; padding: 5px 10px; border-radius: 3px;">Regular</span>'
-        )
+            color = '#28a745'
+            status = 'On Offer'
+        else:
+            color = '#6c757d'
+            status = 'Regular'
+
+        html = f'<span style="background-color: {escape(color)}; color: white; padding: 5px 10px; border-radius: 3px;">{escape(status)}</span>'
+        return mark_safe(html)
     offer_badge.short_description = 'Offer Status'
 
     actions = ['mark_as_offer', 'remove_from_offer']

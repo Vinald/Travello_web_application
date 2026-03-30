@@ -21,7 +21,7 @@ class RegisterView(View):
     User registration view.
     Handles both GET (display form) and POST (process registration) requests.
     """
-    template_name = 'register.html'
+    template_name = 'account/register.html'
     form_class = RegistrationForm
 
     def get(self, request):
@@ -59,7 +59,7 @@ class LoginView(View):
     User login view.
     Handles both GET (display form) and POST (process login) requests.
     """
-    template_name = 'login.html'
+    template_name = 'account/login.html'
     form_class = LoginForm
 
     def get(self, request):

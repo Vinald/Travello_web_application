@@ -16,7 +16,7 @@ class IndexView(View):
     """
     Home page view displaying destinations, news, testimonials, and sliders.
     """
-    template_name = 'index.html'
+    template_name = 'destination/index.html'
     paginate_by = 6
 
     def get(self, request, *args, **kwargs):
@@ -64,7 +64,7 @@ class DestinationListView(ListView):
     List view for all destinations.
     """
     model = Destination
-    template_name = 'destination_list.html'
+    template_name = 'destination/destinations.html'
     context_object_name = 'destinations'
     paginate_by = 12
 

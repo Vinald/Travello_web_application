@@ -12,6 +12,9 @@
                                 <li class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}">
                                     <a href="{% url 'index' %}">Home</a>
                                 </li>
+                                <li class="{% if request.resolver_match.url_name == 'destinations' %}active{% endif %}">
+                                    <a href="{% url 'destinations' %}">Destinations</a>
+                                </li>
                                 <li class="{% if request.resolver_match.url_name == 'about' %}active{% endif %}">
                                     <a href="{% url 'about' %}">About us</a>
                                 </li>
@@ -81,10 +84,11 @@
     </div>
     <div class="menu_content">
         <ul>
-            <li><a href="inex.html">Home</a></li>
-            <li><a href="about.html">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'destinations' %}">Destinations</a></li>
+            <li><a href="{% url 'about' %}">About us</a></li>
+            <li><a href="{% url 'services' %}">Services</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
     </div>
     <div class="menu_social">
